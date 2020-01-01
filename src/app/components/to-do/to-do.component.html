@@ -3,4 +3,18 @@
     <h1>TO DO</h1>
   </div>
   <app-add-title></app-add-title>
+  <div class="to-do-list">
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between" *ngFor="let item of toDoList">
+        <Span>
+          <span class="checks" (click)="checkItem($event)">
+            <fa-icon *ngIf="!checked" [icon]="circle"></fa-icon>
+            <fa-icon *ngIf="checked" [icon]="checkCircle"></fa-icon>
+          </span>
+          &nbsp;{{ item }}
+        </Span>
+        <span class="trash-can flex-row-reverse"><fa-icon [icon]="trash"></fa-icon></span>
+      </li>
+    </ul>
+  </div>
 </div>

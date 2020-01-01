@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { ToDoInteractionService } from 'src/app/shared/services/to-do-interaction.service';
 
 @Component({
   selector: 'app-add-title',
@@ -8,14 +9,16 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class AddTitleComponent implements OnInit {
   coffee = faPlusCircle;
+  @ViewChild('title', {static: false}) titleInput: ElementRef;
 
-  constructor() { }
+  constructor(private toDoService: ToDoInteractionService) { }
 
   ngOnInit() {
   }
 
-  addTitle() {
-    console.log("hello")
+  addTitle(title) {
+    this.toDoService.setToDoTitle(title);
+    this.titleInput.nativeElement.value = '';
   }
 
 }
