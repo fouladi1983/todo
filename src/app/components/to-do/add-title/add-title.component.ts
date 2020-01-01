@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { ToDoInteractionService } from 'src/app/shared/services/to-do-interaction.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-add-title',
@@ -17,7 +18,8 @@ export class AddTitleComponent implements OnInit {
   }
 
   addTitle(title) {
-    this.toDoService.setToDoTitle(title);
+    let guid = uuid();
+    this.toDoService.setToDoTitle(guid, title);
     this.titleInput.nativeElement.value = '';
   }
 

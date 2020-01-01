@@ -7,14 +7,17 @@
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between" *ngFor="let item of toDoList">
         <Span>
-          <span class="checks" (click)="checkItem($event)">
-            <fa-icon *ngIf="!checked" [icon]="circle"></fa-icon>
-            <fa-icon *ngIf="checked" [icon]="checkCircle"></fa-icon>
+          <label class="checkContainer">
+            <input type="checkbox" (click)="checkItem(item.id)">
+            <span class="checkmark"></span>
+          </label>
+          <span class="item-title">
+            {{ item.title }}
           </span>
-          &nbsp;{{ item }}
         </Span>
-        <span class="trash-can flex-row-reverse"><fa-icon [icon]="trash"></fa-icon></span>
+        <span class="trash-can flex-row-reverse" (click)="deleteItems()"><fa-icon [icon]="trash"></fa-icon></span>
       </li>
     </ul>
   </div>
 </div>
+

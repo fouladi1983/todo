@@ -14,8 +14,8 @@ export class ToDoInteractionService {
     return this.toDoSubject.asObservable();
   }
 
-  setToDoTitle(title: string) {
-    const toDo = new ToDo(title);
+  setToDoTitle(id: string, title: string) {
+    const toDo = new ToDo(id, title);
     this.toDoSubject.next(toDo);
   }
 }
